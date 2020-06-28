@@ -1,0 +1,6 @@
+@import './b.css';
+
+h2 {
+  color: blue;
+  background: url('./img.jpg');
+}
