@@ -2,7 +2,7 @@
  * @Author: Ian
  * @Email: 1136005348@qq.com
  * @Date: 2020-06-23 13:43:03
- * @LastEditTime: 2020-06-27 12:25:12
+ * @LastEditTime: 2020-07-12 11:22:11
  * @LastEditors: Ian
  * @Description:
  */
@@ -14,6 +14,7 @@ const UglifyJs = require('uglifyjs-webpack-plugin')
 const OptimizeCss = require('optimize-css-assets-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const {BannerPlugin} = require('webpack')
+const FileListPlugin = require('./FileListPlugin')
 
 module.exports = {
   optimization: {
@@ -27,12 +28,11 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
-        pathRewrite: {
-        },
+        pathRewrite: {},
       },
     },
   },
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.js',
   devtool: 'source-map',
   output: {
@@ -128,5 +128,6 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new BannerPlugin('develop by ian.yin'),
+    new FileListPlugin(),
   ],
 }
